@@ -31,4 +31,4 @@ Driver.init (
     }
 );
 
-module.exports = Location;
+module.exports = Driver;
