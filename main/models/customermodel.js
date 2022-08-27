@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) =>{
-    const customer = sequelize.define(
+    const Customer = sequelize.define(
         "customer_info",
         {
             login_id:{
@@ -37,5 +37,5 @@ module.exports = (sequelize, DataTypes) =>{
     customer.associate = (models) => {
         models.customer.belongsTo(models.customerLogin,{foreignKey: "login_id"})
     };
-    return customer;
+    return Customer;
 };
