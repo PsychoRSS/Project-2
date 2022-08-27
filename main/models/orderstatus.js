@@ -18,12 +18,12 @@ Orderstats.init (
     },
     {
         freezeTableName: true,
-        tableName: "driver",
+        tableName: "order",
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Driver'
+        modelName: 'order'
     }
 );
 
