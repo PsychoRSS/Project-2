@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Driver extends Model {}
+class Orderstats extends Model {}
 
-Driver.init (
+Orderstats.init (
     {
         id:{
             type: DataTypes.INTEGER,
@@ -11,14 +11,10 @@ Driver.init (
         primaryKey: true,
         autoIncrement: true
         },
-        first_name: {
+        orderstatus: {
             type: DataTypes.STRING,
             allowNull: false
           },
-          last_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-          }
     },
     {
         freezeTableName: true,
@@ -31,4 +27,4 @@ Driver.init (
     }
 );
 
-module.exports = Location;
+module.exports = Orderstats;

@@ -29,7 +29,7 @@ CREATE TABLE orders (
     cheese BOOLEAN NOT NULL,
     pepperroni BOOLEAN NOT NULL,
     hamburger BOOLEAN NOT NULL,
-    order_status BOOLEAN NOT NULL,
+    order_status INT NOT NULL,
     FOREIGN KEY (customer_id)
     REFERENCES customer_info(id),
     FOREIGN KEY (driver_id)
