@@ -1,16 +1,14 @@
 DROP DATABASE IF EXISTS pizza;
 CREATE DATABASE pizza;
 USE pizza;
-CREATE TABLE customer_login (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(30) NOT NULL,
-  password VARCHAR(30) NOT NULL
-);
-CREATE TABLE customer_info (
+
+CREATE TABLE customer (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     login_id INT,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
+     email VARCHAR(30) NOT NULL,
+    password VARCHAR(30) NOT NULL
     address VARCHAR(30) NOT NULL,
     phone_number INT NOT NULL,
     FOREIGN KEY (login_id)
