@@ -1,7 +1,14 @@
 module.exports = (sequelize, DataTypes) =>{
-    const Customer = sequelize.define(
+    const customer = sequelize.define(
         "customer_info",
         {
+            id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            
             login_id:{
                 type: DataTypes.INTEGER,
                 allowNull: false
@@ -37,5 +44,5 @@ module.exports = (sequelize, DataTypes) =>{
     customer.associate = (models) => {
         models.customer.belongsTo(models.customerLogin,{foreignKey: "login_id"})
     };
-    return Customer;
+    return customer;
 };
