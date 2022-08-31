@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {Driver,Customermodel} = require ('../Project-2/main/models')
+const orderRoutes = require('./ordersroutes');
 
 
 //orders
-router.post('/order/add', )
+router.post('/order/add', orderRoutes.addOrder);
 router.get('order/id,'  )
 
 
