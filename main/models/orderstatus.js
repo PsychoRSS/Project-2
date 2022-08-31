@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Orderstats extends Model {}
+class Orderstatus extends Model {}
 
-Orderstats.init (
+Orderstatus.init (
     {
         id:{
             type: DataTypes.INTEGER,
@@ -11,7 +11,7 @@ Orderstats.init (
         primaryKey: true,
         autoIncrement: true
         },
-        orderstatus: {
+        order_status: {
             type: DataTypes.STRING,
             allowNull: false
           },
@@ -27,4 +27,4 @@ Orderstats.init (
     }
 );
 
-module.exports = Orderstats;
+module.exports = Orderstatus;
