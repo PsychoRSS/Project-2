@@ -14,6 +14,8 @@ const Customer = sequelize.define(
                 allowNull: false
         
             },
+
+            
             first_name: {
                 type: DataTypes.STRING,
                 allowNull : false
@@ -42,15 +44,17 @@ const Customer = sequelize.define(
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
-
-
         },
-        {underscored: true,
-        freezeTableName: true,
-        tableName: "customer",
-    }
+        
+        {
+            underscored: true,
+            freezeTableName: true,
+            tableName: "customer",
+        }
     );
     return Customer;
 };
+
+
 
             
