@@ -4,7 +4,7 @@ const orderRoutes = require('./ordersroutes');
 
 
 //orders
-router.post('/order/add', orderRoutes.addOrder);
+router.post('/order/add', orderRoutes.orderAdd);
 router.get('order/id,'  )
 
 
