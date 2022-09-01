@@ -1,7 +1,8 @@
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
+class Customer extends Model {}
 
-module.exports = (sequelize, DataTypes) =>{
-const Customer = sequelize.define(
-        "customer",
+        Customer.init (
         {
             id: {
                 type: DataTypes.INTEGER,
@@ -15,7 +16,6 @@ const Customer = sequelize.define(
                 allowNull: false
         
             },
-
 
             first_name: {
                 type: DataTypes.STRING,
@@ -36,6 +36,7 @@ const Customer = sequelize.define(
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            
             address: {
                 type: DataTypes.TEXT,
                 allowNull: false
@@ -48,13 +49,16 @@ const Customer = sequelize.define(
         },
         
         {
+            sequelize,
             underscored: true,
             freezeTableName: true,
             tableName: "customer",
+            modelName: 'Customer'
         }
     );
-    return Customer;
-};
+  module.exports = Customer;
+
+
 
 
 

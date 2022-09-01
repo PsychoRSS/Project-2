@@ -39,6 +39,17 @@ exports.addCustomer = (req, res) => {
                         address: data.address,
                         phone_number: data.phone_number,
                     })
+                    res.status(200)({
+                        status: 'Success',
+                        message: "Customer created successfully!",
+                        data: newCustomer.get({plain: true})
+                    });
+                } catch (error) {
+                    res.status(500)({
+                        status: "error",
+                        message: "Failed to create new customer.",
+                        data: data
+                    });
                 }
             }
         }

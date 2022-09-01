@@ -24,7 +24,7 @@ exports.orderAdd = (req, res) => {
             })
             if(user){
                 try{
-                    let order = await models.orders.create({
+                    let order = await models.Orders.create({
                         customer_id: data.customer_id,
                         size: data.size,
                         cheese: data.cheese,
@@ -56,7 +56,7 @@ exports.orderAdd = (req, res) => {
 }
 
 exports.getOrderById = async (req, res) => {
-    let order = await models.orders.findOne({
+    let order = await models.Orders.findOne({
         where: {id: customer_id}
     })
     let customerData = await order.getUser()
