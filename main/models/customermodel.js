@@ -1,7 +1,14 @@
 module.exports = (sequelize, DataTypes) =>{
     const Customer = sequelize.define(
-        "customer_info",
+        "customer",
         {
+            id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                primaryKey: true,
+                autoIncrement: true,
+            },
+
             login_id:{
                 type: DataTypes.INTEGER,
                 allowNull: false
@@ -17,6 +24,15 @@ module.exports = (sequelize, DataTypes) =>{
                 allowNull: false
             },
 
+            email: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            
+            password: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             address: {
                 type: DataTypes.TEXT,
                 allowNull: false
@@ -31,11 +47,10 @@ module.exports = (sequelize, DataTypes) =>{
         },
         {underscored: true,
         freezeTableName: true,
-        tableName: "customer_info",
+        tableName: "customer",
     }
     );
-    customer.associate = (models) => {
-        models.customer.belongsTo(models.customerLogin,{foreignKey: "login_id"})
-    };
+  
     return Customer;
 };
+            
