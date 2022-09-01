@@ -56,6 +56,20 @@ exports.orderAdd = (req, res) => {
 }
 
 exports.getOrderById = async (req, res) => {
-    let customerData = await order.
+    let order = await models.orders.findOne({
+        where: {id: customer_id}
+    })
+    let customerData = await order.getUser()
+    let customer = {
+        first_name : customerData.first_name,
+        last_name: customerData.last_name,
+        address: customerData.address,
+    }
+    res.status(200) ({
+        status: 'success',
+        message: 'Order Found!',
+        data : {order, customer}
+    });
+    
 }
 
