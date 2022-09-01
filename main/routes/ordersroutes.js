@@ -1,7 +1,7 @@
 const {models} = require('../models/orders');
 const Joi = require('joi');
 
-exports.addOrder = (req, res) => {
+exports.orderAdd = (req, res) => {
     const data = req.body;
     const schema = Joi.object().keys({
         customer_id: Joi.number().required(),
@@ -53,5 +53,9 @@ exports.addOrder = (req, res) => {
                 
         }
     })
+}
+
+exports.getOrderById = async (req, res) => {
+    let customerData = await order.
 }
 
