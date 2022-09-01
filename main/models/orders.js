@@ -27,7 +27,7 @@ Orders.init (
             type : DataTypes.boolean,
             allowNull: false
           }, 
-          pepporroni:{
+          pepperroni:{
             type : DataTypes.boolean,
             allowNull: false
           },
