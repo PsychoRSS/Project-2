@@ -1,6 +1,8 @@
 const {models} = require('../models/orders');
-const Joi = require('joi');
+const Joi = require('joi'); //using joi for data validation
 
+
+//arrow function for adding a new order
 exports.orderAdd = (req, res) => {
     const data = req.body;
     const schema = Joi.object().keys({
@@ -11,6 +13,8 @@ exports.orderAdd = (req, res) => {
         pepperroni: Joi.boolean().truthy('yes').falsy('no').sensitive(),
         hamburger: Joi.boolean().truthy('yes').falsy('no').sensitive(),
     })
+
+    //validating the data is in the correct format for the table
     Joi.validate(data, schema, async (err, value) => {
         if (err) {
             res.status(422) ({
@@ -23,6 +27,8 @@ exports.orderAdd = (req, res) => {
                 where: {id: data.customer_id}
             })
             if(user){
+
+                //creating the new order based on inputs
                 try{
                     let order = await models.Orders.create({
                         customer_id: data.customer_id,
@@ -43,6 +49,7 @@ exports.orderAdd = (req, res) => {
                         data: data
                     });
                 }
+            //must be a customer already in the database to create an order
             } else {
                 res.status(404)({
                     status: 'error',
@@ -55,6 +62,7 @@ exports.orderAdd = (req, res) => {
     })
 }
 
+//arrow function for searching for an order by the customer_id
 exports.getOrderById = async (req, res) => {
     let order = await models.Orders.findOne({
         where: {id: customer_id}

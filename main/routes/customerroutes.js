@@ -1,7 +1,7 @@
 const {models} = require('../models/customer');
-const Joi = require('joi');
+const Joi = require('joi'); //using joi for data validation
 
-
+//arrow function for adding a new customer
 exports.addCustomer = (req, res) => {
     const data = req.body;
     const schema = Joi.object().keys({
@@ -12,6 +12,7 @@ exports.addCustomer = (req, res) => {
         address: Joi.string().required(),
         phone_number: Joi.number().required(),
     })
+    //validating the data entry fits the database schema properly.
     Joi.validate(data, schema, async (err, value) => {
         if (err){
             res.status(422)({
@@ -19,6 +20,8 @@ exports.addCustomer = (req, res) => {
                 message: "Invalid data input format",
                 data: data,
             });
+
+            //check for existing email in database. ensures each customer has a unique email address.
         } else {
             let customer = await models.Customer.findOne({
                 where: {email: data.email}
@@ -30,6 +33,7 @@ exports.addCustomer = (req, res) => {
                     data: data,
                 })
             } else {
+                //creating the new customer in the customer table
                 try {
                     let newCustomer = await models.Customer.create({
                         first_name: data.first_name,
