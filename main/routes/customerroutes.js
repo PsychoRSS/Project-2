@@ -29,4 +29,18 @@ exports.addCustomer = (req, res) => {
                     message: "Email Address is already in use.",
                     data: data,
                 })
-            
+            } else {
+                try {
+                    let newCustomer = await models.Customer.create({
+                        first_name: data.first_name,
+                        last_name: data.last_name,
+                        email: data.email,
+                        password: data.password,
+                        address: data.address,
+                        phone_number: data.phone_number,
+                    })
+                }
+            }
+        }
+    })
+}
