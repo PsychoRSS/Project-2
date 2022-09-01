@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) =>{
-    const Customer = sequelize.define(
+const Customer = sequelize.define(
         "customer",
         {
             id: {
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) =>{
                 primaryKey: true,
                 autoIncrement: true,
             },
-
+            
             login_id:{
                 type: DataTypes.INTEGER,
                 allowNull: false
@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) =>{
         tableName: "customer",
     }
     );
-  
     return Customer;
 };
+
             
