@@ -8,11 +8,9 @@ CREATE TABLE customer (
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     email VARCHAR(30) NOT NULL,
-    password VARCHAR(30) NOT NULL
+    password VARCHAR(30) NOT NULL,
     address VARCHAR(30) NOT NULL,
-    phone_number INT NOT NULL,
-    FOREIGN KEY (login_id)
-    REFERENCES customer_login(id)
+    phone_number INT NOT NULL
 );
 CREATE TABLE driver (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -29,7 +27,7 @@ CREATE TABLE orders (
     hamburger BOOLEAN NOT NULL,
     order_status INT NOT NULL,
     FOREIGN KEY (customer_id)
-    REFERENCES customer_info(id),
+    REFERENCES customer(id),
     FOREIGN KEY (driver_id)
     REFERENCES driver(id)
 );
