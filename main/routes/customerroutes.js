@@ -1,9 +1,13 @@
 const {models} = require('../models/customer');
 const Joi = require('joi'); //using joi for data validation
 
+
+
 //arrow function for adding a new customer
-exports.addCustomer = (req, res) => {
+exports.addCustomer = async (req, res) => {
+        
     const data = req.body;
+ 
     const schema = Joi.object().keys({
         first_name: Joi.string().required(),
         last_name: Joi.string().required(),
@@ -14,6 +18,7 @@ exports.addCustomer = (req, res) => {
     })
     //validating the data entry fits the database schema properly.
     Joi.validate(data, schema, async (err, value) => {
+
         if (err){
             res.status(422)({
                 status: 'Error',
@@ -27,7 +32,7 @@ exports.addCustomer = (req, res) => {
                 where: {email: data.email}
             })
             if(customer){
-                res.status(422)({
+                res.status(422).json({
                     status: "Error",
                     message: "Email Address is already in use.",
                     data: data,
@@ -43,16 +48,16 @@ exports.addCustomer = (req, res) => {
                         address: data.address,
                         phone_number: data.phone_number,
                     })
-                    res.status(200)({
+                    res.status(200).json({
                         status: 'Success',
                         message: "Customer created successfully!",
                         data: newCustomer.get({plain: true})
                     });
                 } catch (error) {
-                    res.status(500)({
+                    res.status(500).json({
                         status: "error",
                         message: "Failed to create new customer.",
-                        data: data
+                        data: data.email
                     });
                 }
             }
