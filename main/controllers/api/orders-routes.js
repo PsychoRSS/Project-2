@@ -1,9 +1,10 @@
-const {models} = require('../models/orders');
+const {models} = require('../../models/orders');
 const Joi = require('joi'); //using joi for data validation
+const router = require('express').Router();
 
 
 //arrow function for adding a new order
-exports.orderAdd = (req, res) => {
+router.post('/add', async (req, res) => {
     const data = req.body;
     const schema = Joi.object().keys({
         customer_id: Joi.number().required(),
@@ -23,7 +24,7 @@ exports.orderAdd = (req, res) => {
                 data: data
             });
         } else {
-            let user = await models.Customermodel.findOne({
+            let user = await models.Customer.findOne({
                 where: {id: data.customer_id}
             })
             if(user){
@@ -60,10 +61,9 @@ exports.orderAdd = (req, res) => {
                 
         }
     })
-}
+})
 
-//arrow function for searching for an order by the customer_id
-exports.getOrderById = async (req, res) => {
+router.get('/get', async (req, res) => {
     let order = await models.Orders.findOne({
         where: {id: customer_id}
     })
@@ -79,5 +79,7 @@ exports.getOrderById = async (req, res) => {
         data : {order, customer}
     });
     
-}
+});
+
+module.exports = router;
 

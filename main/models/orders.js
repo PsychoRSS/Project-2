@@ -14,9 +14,6 @@ Orders.init (
         customer_id: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: function(input){
-                const done = this.async();
-            }
           },
           
           size: {
