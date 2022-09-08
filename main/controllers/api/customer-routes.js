@@ -1,12 +1,13 @@
-const {models} = require('../../models/customer');
+const { Customer } = require('../../models');
 const router = require('express').Router();
 const Joi = require('joi');
-const data = req.body;
+
 
 //Login
 router.post('/login', async (req, res) => {
+  const data = req.body;
   try {
-    const customerData = await models.Customer.findOne({
+    const customerData = await Customer.findOne({
       where: {
         email : data.email,
       },
@@ -69,7 +70,7 @@ router.post ('/', async (req, res) => {
 
           //check for existing email in database. ensures each customer has a unique email address.
       } else {
-          let customer = await models.Customer.findOne({
+          let customer = await Customer.findOne({
               where: {email: data.email}
           })
           if(customer){
@@ -81,7 +82,7 @@ router.post ('/', async (req, res) => {
           } else {
               //creating the new customer in the customer table
               try {
-                  let newCustomer = await models.Customer.create({
+                  let newCustomer = await Customer.create({
                       first_name: data.first_name,
                       last_name: data.last_name,
                       email: data.email,

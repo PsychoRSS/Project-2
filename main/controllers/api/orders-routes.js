@@ -1,4 +1,4 @@
-const {models} = require('../../models/orders');
+const { Customer } = require('../../models');
 const Joi = require('joi'); //using joi for data validation
 const router = require('express').Router();
 
