@@ -1,6 +1,5 @@
 const { Customer } = require('../../models');
 const router = require('express').Router();
-const Joi = require('joi');
 
 
 //Login
@@ -48,39 +47,8 @@ router.post('/logout', (req, res) => {
 });
 
 // adding a new customer
-router.post ('/', async (req, res) => {
+router.post ('/create', async (req, res) => {
   const data = req.body;
-  const schema = Joi.object().keys({
-      first_name: Joi.string().required(),
-      last_name: Joi.string().required(),
-      email: Joi.string().email(),
-      password: Joi.string().required(),
-      address: Joi.string().required(),
-      phone_number: Joi.number().required(),
-  })
-  //validating the data entry fits the database schema properly.
-  Joi.validate(data, schema, async (err, value) => {
-
-      if (err){
-          res.status(422)({
-              status: 'Error',
-              message: "Invalid data input format",
-              data: data,
-          });
-
-          //check for existing email in database. ensures each customer has a unique email address.
-      } else {
-          let customer = await Customer.findOne({
-              where: {email: data.email}
-          })
-          if(customer){
-              res.status(422).json({
-                  status: "Error",
-                  message: "Email Address is already in use.",
-                  data: data,
-              })
-          } else {
-              //creating the new customer in the customer table
               try {
                   let newCustomer = await Customer.create({
                       first_name: data.first_name,
@@ -102,10 +70,8 @@ router.post ('/', async (req, res) => {
                       data: data.email
                   });
               }
-          }
-      }
-  })
-})
+          })
+     
 
 module.exports = router;
     
