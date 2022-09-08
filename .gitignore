@@ -1,4 +1,6 @@
 .env
 DS_Store
-main/node_modules
+node_modules/
 main/package-lock.json
+main/node_modules/.bin/color-support
+main\node_modules\
