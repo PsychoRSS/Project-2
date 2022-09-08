@@ -21,15 +21,15 @@ Orders.init (
             allowNull: false
           },
           cheese:{
-            type : DataTypes.boolean,
+            type: DataTypes.BOOLEAN,
             allowNull: false
           }, 
           pepperroni:{
-            type : DataTypes.boolean,
+            type : DataTypes.BOOLEAN,
             allowNull: false
           },
           hamburger:{
-            type : DataTypes.boolean,
+            type : DataTypes.BOOLEAN,
             allowNull: false
           },
           order_status:{
