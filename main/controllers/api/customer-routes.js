@@ -50,18 +50,17 @@ router.post('/logout', (req, res) => {
 router.post ('/create', async (req, res) => {
   const data = req.body;
               try {
-                  let newCustomer = await Customer.create({
+                  const newCustomer = await Customer.create({
                       first_name: data.first_name,
                       last_name: data.last_name,
                       email: data.email,
                       password: data.password,
                       address: data.address,
                       phone_number: data.phone_number,
-                  })
-                  res.status(200).json({
-                      status: 'Success',
-                      message: "Customer created successfully!",
-                      data: newCustomer.get({plain: true})
+                  });
+                  req.session.save(() => {
+                    req.session.loggedIn = true;
+                  res.status(200).json(newCustomer);
                   });
               } catch (error) {
                   res.status(500).json({
@@ -70,7 +69,10 @@ router.post ('/create', async (req, res) => {
                       data: data.email
                   });
               }
-          })
+            });
+
+            
+          
      
 
 module.exports = router;
