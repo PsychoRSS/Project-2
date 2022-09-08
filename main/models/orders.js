@@ -21,7 +21,7 @@ Orders.init (
             allowNull: false
           },
           cheese:{
-            type : DataTypes.BOOLEAN,
+            type: DataTypes.BOOLEAN,
             allowNull: false
           }, 
           pepperroni:{

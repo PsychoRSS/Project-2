@@ -1,9 +1,11 @@
+const { Customer } = require('../../models');
 const router = require('express').Router();
-const Customer = require('../../models/customer');
-const data = req.body;
+const Joi = require('joi');
+
 
 //Login
 router.post('/login', async (req, res) => {
+  const data = req.body;
   try {
     const customerData = await Customer.findOne({
       where: {
