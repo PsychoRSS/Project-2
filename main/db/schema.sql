@@ -1,5 +1,7 @@
 DROP DATABASE IF EXISTS pizza;
+
 CREATE DATABASE pizza;
+
 USE pizza;
 
 CREATE TABLE customer (

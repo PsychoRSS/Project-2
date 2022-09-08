@@ -9,7 +9,7 @@ const signupFormHandler = async (event) => {
     const phonenumber = document.querySelector('#phonenumber').value.trim();
     
     if (firstName && lastName && email && password && address && phonenumber) {
-      const response = await fetch('/api/users', {
+      const response = await fetch('/api/users/create', {
         method: 'POST',
         body: JSON.stringify({ firstName,lastName, email, password, address, phonenumber}),
         headers: { 'Content-Type': 'application/json' },
