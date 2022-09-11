@@ -5,6 +5,7 @@ const router = require('express').Router();
 //Login
 router.post('/login', async (req, res) => {
   const data = req.body;
+  console.log(data.email)
   try {
     const customerData = await Customer.findOne({
       where: {
@@ -48,6 +49,7 @@ router.post('/logout', (req, res) => {
 
 // adding a new customer
 router.post ('/create', async (req, res) => {
+  console.log('made it to create')
   const data = req.body;
               try {
                   const newCustomer = await Customer.create({
