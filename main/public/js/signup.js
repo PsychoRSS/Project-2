@@ -16,12 +16,10 @@ const signupFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/home');
       } else {
         alert(response.statusText);
       }
     }
   };
-  document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+  document.querySelector('#firstName-signup', '#lastName-signup', '#email-signup', '#password-signup', '#address-signup', '#phonenumber' ).addEventListener('submit', signupFormHandler);
