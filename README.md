@@ -23,6 +23,10 @@
 
   # Installation
   Express.js, handlebars, node.js, joi, mysql, sequelize, bootstrap css.
+  Use NPM I, Create a .env file and input 
+  DB_NAME= 'pizza'
+  DB_PASSWORD='your mysqlpass'
+  DB_USER='root'
 
   # License
   This project is covered by the following license: 
