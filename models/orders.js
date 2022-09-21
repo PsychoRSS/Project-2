@@ -32,13 +32,13 @@ Orders.init (
             type : DataTypes.BOOLEAN,
             allowNull: false
           },
-          order_status:{
+          /* order_status:{
             type: DataTypes.INTEGER,
             references: {
               model: 'Orderstatus',
               key: 'id',
             },
-          }
+          } */
     },
     {
         sequelize,
