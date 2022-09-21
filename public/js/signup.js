@@ -1,7 +1,7 @@
 const signupFormHandler = async (event) => {
     event.preventDefault();
   
-    const firstName = document.querySelector('#firstName-signup').value.trim();
+    const firstName = document.querySelector('.firstName-signup').value.trim();
     const lastName = document.querySelector('#lastName-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
@@ -22,4 +22,4 @@ const signupFormHandler = async (event) => {
       }
     }
   };
-  document.querySelector('#firstName-signup', '#lastName-signup', '#email-signup', '#password-signup', '#address-signup', '#phonenumber' ).addEventListener('submit', signupFormHandler);
+  document.querySelector('.box' ).addEventListener('submit', signupFormHandler);
